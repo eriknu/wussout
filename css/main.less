@@ -13,7 +13,6 @@
 	z-index: 10;
 }
 
-
 /*======================================
   #Navigation
 ======================================*/
@@ -87,8 +86,6 @@
 	}
 }
 
-
-
 /*======================================
   #Phone
 ======================================*/
@@ -102,6 +99,12 @@
 	position: relative;
 	z-index: 5;
 	perspektive: 600px;
+	transition: all 1s;
+
+	&.animate{
+		transform: rotate(360deg);
+		transform-origin: top;
+	}
 
 	.speaker{
 		position: absolute;
@@ -191,6 +194,104 @@
 		background: -ms-linear-gradient(left,  @main-color 0%,@second-color 100%);
 		background: linear-gradient(to right,  @main-color 0%,@second-color 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31c5a3', endColorstr='#4491b5',GradientType=1 ); /* IE6-9 */
+}
+
+
+/*======================================
+  #Loader
+======================================*/
+.overlay{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #eee;
+	z-index: -9;
+	
+	opacity: 0;
+	transition: opacity 1s linear;
+
+}
+
+.loader{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  width: 50px;
+  height: 50px;
+  z-index: -999;
+  opacity: 0;
+  
+  transition: opacity 1s linear;
+
+	&.active{
+		opacity: 1;
+		z-index: 999;
+
+		+ .overlay{
+			z-index: 9;
+			opacity: 1;
+		}
+	}
+
+}
+
+.loader::before, .loader::after{
+  content: "";
+background: #31c5a3;
+  border-radius: 100%;
+  -webkit-animation: loading 2s ease infinite;
+  animation: loading 2s ease infinite;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  
+}
+
+.loader::after{
+  background: #4491b5;
+	-webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
+@-webkit-keyframes loading{
+  0%{
+    transform: translateY(-50%) translateX(0);
+  }
+  25%{
+  transform: translateY(0) translateX(50%) scale(.2);
+    
+  }
+  50%{
+  transform: translateY(50%) translateX(0);
+  }
+  75%{
+     transform: translateY(0) translateX(-50%) scale(.2);
+  }
+  100%{
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes loading{
+  0%{
+    transform: translateY(-50%) translateX(0);
+  }
+  25%{
+  transform: translateY(0) translateX(50%) scale(.2);
+    
+  }
+  50%{
+  transform: translateY(50%) translateX(0);
+  }
+  75%{
+     transform: translateY(0) translateX(-50%) scale(.2);
+  }
+  100%{
+    transform: translateY(-50%) translateX(0);
+  }
 }
 
 /*======================================

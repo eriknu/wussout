@@ -15,17 +15,40 @@
       var ctx = canvas.getContext("2d");
       var y = 0;
       var x = 0;
+      var userX = 0;
+      var userY = 0;
+      var direction2 = "right";
       var cubeHeight = 50;
       var direction = "down";
       var direction2 = "right";
       var imageObj = new Image();
       var imageObj2 = new Image();
+      var pacman = new Image();
+      var pacmanDirection = "";
 
+
+      pacman.src = "img/pacman.png";
       imageObj.src = "img/ghost-red.png";
-
       imageObj2.src = "img/ghost-blue.png";
 
       setInterval(loop, 20);
+
+
+      window.onkeydown = function(e){
+        console.log(e.keyCode + '' +pacmanDirection);
+
+        if(e.keyCode == 87){
+          pacmanDirection = "up";
+        } else if(e.keyCode == 83){
+          pacmanDirection = "down";
+        } else if(e.keyCode == 65){
+          pacmanDirection = "left";
+        } else if(e.keyCode == 68){
+          pacmanDirection = "right";
+        } 
+
+      }
+
 
       function loop(){
         ctx.clearRect(0,0,canvas.width, canvas.height);
@@ -52,6 +75,21 @@
           x--;
         else
             direction2 = "right";
+
+
+    
+        if( userX < (canvas.width-cubeHeight) && pacmanDirection == "right" )
+          userX++;
+   
+        if( userX > 0 && pacmanDirection == "left")
+          userX--;
+
+        if( userY < (canvas.width-cubeHeight) && pacmanDirection == "down" )
+          userY++;
+
+        if( userY > 0 && pacmanDirection == "up")
+          userY--;
+
        
         ctx.save();
        
@@ -67,6 +105,15 @@
           ctx.drawImage(imageObj2, 0, 0 ,cubeHeight ,cubeHeight);
           
         ctx.restore();
+
+
+        ctx.save();
+          
+          ctx.translate(userX, userY);
+          ctx.drawImage(pacman, 0, 0 ,cubeHeight ,cubeHeight);
+          
+        ctx.restore();
+
 
       }
     </script>

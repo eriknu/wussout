@@ -9,9 +9,49 @@
 
 }
 
+@media only screen and (min-width : 768px) {
+	.main-nav{display: block!important;}
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-	
+	.main-nav{display: none;}
+
+	.main-nav{
+		text-align: left;
+
+		ul{
+			display: block;
+
+			li{
+				float: none;
+
+				a{
+					border-top: 1px solid @border-color;
+				}
+
+				&:first-child a{ border: 0; }
+			}
+		}
+	}
+
+	.featured-start h1 span{ font-size: 40px; }
+
+	.toggle-main-nav{
+		display: block;
+		width: 30px;
+		position: absolute;
+		top: 15px;
+		right: 20px;
+
+		span{
+			display: block;
+			background: @main-color;
+			height: 4px;
+			margin-bottom: 4px;
+			border-radius: 3px;
+		}
+	}
 }
 
 /* Extra Small Devices, Phones */ 
