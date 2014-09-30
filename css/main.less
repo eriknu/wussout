@@ -1,0 +1,200 @@
+@import 'base.less';
+
+/*======================================
+  #Header
+======================================*/
+
+.top{
+	background: white;
+	padding: 20px 0;
+	position: absolute;
+	top: 5px;
+	width: 100%;
+	z-index: 10;
+}
+
+
+/*======================================
+  #Navigation
+======================================*/
+
+.main-nav{
+	text-align: right;
+	ul{
+		.clearfix();
+		display: inline-block;
+		margin:4px 0 0;
+		li{
+			display: block;
+			float: left;
+			a{
+				display: block;
+				color: @light-text-color;
+				padding: 18px;
+				line-height: 1;
+				&:hover{ color: @text-color; }
+			}
+
+			&.selected a{ color: @text-color; }
+		}
+	}
+}
+
+/*======================================
+  #Featured start
+======================================*/
+
+.featured-start{
+	background: url(../img/background.jpg) no-repeat top center;
+	background-size: cover;
+	height: 650px;
+	position: relative;
+	padding-top: 140px;
+	margin-bottom: 170px;	
+
+	.gradient-overlay{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		opacity: .7;
+
+		//Gradient
+		background: @main-color; 
+			background: -moz-linear-gradient(left,  @main-color 0%, @second-color 100%); 
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,@main-color), color-stop(100%,@second-color)); 
+			background: -webkit-linear-gradient(left,  @main-color 0%,@second-color 100%);
+			background: -o-linear-gradient(left,  @main-color 0%,@second-color 100%); 
+			background: -ms-linear-gradient(left,  @main-color 0%,@second-color 100%);
+			background: linear-gradient(to right,  @main-color 0%,@second-color 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31c5a3', endColorstr='#4491b5',GradientType=1 ); /* IE6-9 */
+
+	}
+
+	h1{
+		color: white;
+		text-align: center;
+		position: relative;
+		font-size: 22px;
+		line-height: 1;
+		letter-spacing: 2px;
+		z-index: 1;
+
+		span{
+			display: block;
+			font-size: 74px;
+		}
+	}
+}
+
+
+
+/*======================================
+  #Phone
+======================================*/
+
+.phone{
+	width: 265px;
+	height: 500px;
+	margin: 30px auto 0;
+	.round(30px);
+	background: @text-color;
+	position: relative;
+	z-index: 5;
+	perspektive: 600px;
+
+	.speaker{
+		position: absolute;
+		width: 28px;
+		height: 5px;
+		background: #3e3e3e;
+		.round(4px);
+		left: 50%;
+		top: 30px;
+		margin-left: -14px;
+	}
+
+	.phone-logo{
+		position: absolute;
+		top: 55px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.home-button{
+		width: 46px;
+		height: 46px;
+		.round(50%);
+		background: @main-color;
+		position: absolute;
+		left: 50%;
+		bottom: 30px;
+		margin-left: -23px;
+		cursor: pointer;
+	}
+	
+}
+
+/*======================================
+  #Download
+======================================*/
+
+.download{
+	text-align: center;
+}
+
+/*======================================
+  #Quotes
+======================================*/
+
+.quotes{
+	margin: 70px 0;
+}
+
+.box{
+	background: white;
+	padding: 36px;
+	border-bottom: 2px solid @border-color;
+	margin-bottom: 30px;
+}
+
+
+/*======================================
+  #Footer
+======================================*/
+
+.footer{
+	text-align: center;
+	background: white;
+	border-top: 1px solid @border-color;
+	padding: 55px 0;
+	margin-top: 120px;
+
+	p{
+		color: @light-text-color;
+		font-size: 11px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin: 5px 0 0;
+	}
+}
+
+.border-gradient{
+	height: 8px;
+	width: 100%;
+
+	background: @main-color; 
+		background: -moz-linear-gradient(left,  @main-color 0%, @second-color 100%); 
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,@main-color), color-stop(100%,@second-color)); 
+		background: -webkit-linear-gradient(left,  @main-color 0%,@second-color 100%);
+		background: -o-linear-gradient(left,  @main-color 0%,@second-color 100%); 
+		background: -ms-linear-gradient(left,  @main-color 0%,@second-color 100%);
+		background: linear-gradient(to right,  @main-color 0%,@second-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31c5a3', endColorstr='#4491b5',GradientType=1 ); /* IE6-9 */
+}
+
+/*======================================
+  #Responsive
+======================================*/
+
+@import 'responsive.less';
