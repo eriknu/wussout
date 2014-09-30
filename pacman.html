@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      #pacman{
+        background: #000;
+        border: 15px solid blue;
+      }
+    </style>
+  </head>
+<body>
+  <canvas id="pacman" width="500" height="500"></canvas>
+  <script>
+      var canvas = document.getElementById("pacman");
+      var ctx = canvas.getContext("2d");
+      var y = 0;
+      var x = 0;
+      var cubeHeight = 50;
+      var direction = "down";
+      var direction2 = "right";
+      var imageObj = new Image();
+      var imageObj2 = new Image();
+
+      imageObj.src = "img/ghost-red.png";
+
+      imageObj2.src = "img/ghost-blue.png";
+
+      setInterval(loop, 20);
+
+      function loop(){
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        
+        //logik för att animera spöke på y-axel
+        if( y < (canvas.height-cubeHeight) && direction == "down" )
+          y++;
+        else
+            direction = "up";
+        
+        if(y > 0 && direction == "up")
+          y--;
+        else
+            direction = "down";
+        
+        
+        //logik för att animera spöke på x-axel
+        if( x < (canvas.width-cubeHeight) && direction2 == "right" )
+          x++;
+        else
+            direction2 = "left";
+        
+        if(y > 0 && direction2 == "left")
+          x--;
+        else
+            direction2 = "right";
+       
+        ctx.save();
+       
+          ctx.translate(225, y);
+          ctx.drawImage(imageObj, 0, 0 ,cubeHeight ,cubeHeight);
+          
+        ctx.restore();
+        
+        
+        ctx.save();
+          
+          ctx.translate(x, 225);
+          ctx.drawImage(imageObj2, 0, 0 ,cubeHeight ,cubeHeight);
+          
+        ctx.restore();
+
+      }
+    </script>
+</body>
+</html>
